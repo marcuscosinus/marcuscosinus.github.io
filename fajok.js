@@ -1,0 +1,10 @@
+//		FAJOK
+
+//VÁLASZTHATÓ TULAJDONSÁGOK DEKLARÁLÁSA
+
+//		GOMB
+
+
+
+
+

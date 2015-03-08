@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+	<title>Kard és Mágia Karakterlap</title>
+</head>
+<body>
+
+<div><h1>SZINT</h1>
+
+<input type="number" min="3" max="20"></input>
+</div>
+
+<div id="attribs">
+		<h1>Tulajdonságok</h1>
+			<table>
+				<tr>
+				<th>Tulajdonságok</th>
+				<th>Módosító</th>
+				</tr>
+				<tr>
+					<td id="str">Erő: <span></span></td>
+					<td id="strMod"> <span></span></td>
+				</tr>
+				<tr>
+					<td id="agi">Ügyesség: <span></span></td>
+					<td id="agiMod"> <span></span></td>
+				</tr>
+				<tr>
+					<td id="ints">Intelligencia: <span></span></td>
+					<td id="intsMod"><span></span></td>
+				</tr>
+				<tr>
+					<td id="con">Egészség: <span></span></td>
+					<td id="conMod"><span></span></td>
+				</tr>
+				<tr>
+					<td id="wis">Bölcsesség: <span></span></td>
+					<td id="wisMod"><span></span></td>
+				</tr>
+				<tr>	
+					<td id="cha">Karizma: <span></span></td>	
+					<td id="chaMod"><span></span></td>
+				</tr>
+			</table>
+
+
+
+<button type="button" name="roll" onclick="statok()">Roll</button>
+</div>
+
+
+<div id="faj">
+		<h1>Faj</h1>
+		<select id="fajValaszto">
+			<option value="null">Válassz</option>
+			<option value="Ember">Ember</option>
+			<option value="Amazon">Amazon</option>
+			<option value="Birodalmi">Birodalmi</option>
+			<option value="Etúniai">Etúniai</option>
+			<option value="Északi">Északi</option>
+			<option value="Ősember">Ősember</option>
+			<option value="Elf">Elf</option>
+			<option value="Félelf">Félelf</option>
+			<option value="Félork">Félork</option>
+			<option value="Félszerzet">Félszerzet</option>
+			<option value="Gnóm">Gnóm</option>
+			<option value="Törpe">Törpe</option>
+		</select>
+		<input id="fajGomb" type="button" value="OK"></input>
+		</div>
+
+<div id="kaszt">
+		<h1>Osztály</h1>
+		<select id="kasztValaszto">
+			<option value="null">Válassz</option>
+			<option value="Harcos">Harcos</option>
+			<option value="Íjász">Íjász</option>
+			<option value="Amazon">Amazon</option>
+			<option value="Tengerész/Kalóz">Tengerész/Kalóz</option>
+			<option value="Barbár">Barbár</option>
+			<option value="Pap">Pap</option>
+			<option value="Tolvaj">Tolvaj</option>
+			<option value="Varázsló">Varázsló</option>
+		</select>
+		<input id="kasztGomb" type="button" value="OK"></input>
+		</div>
+
+<div id="masodlagos">
+		<h1>Másodlagos értékek</h1>
+		<div id="hp">HP: <span></span></div>
+		<div id="vo">VO: <span></span></div>
+		<div id="attackBonus">Támadási bónusz: <span></span></div>
+		<div id="kitartas">Kitartás: <span></span></div>
+		<div id="reflex">Reflex: <span></span></div>
+		<div id="akaratero">Akaraterő: <span></span></div>
+		<div id="jellem">Jellem: 
+
+		<select name="" id="jellem">
+			<option value="torvenyesJo">Törvényes Jó</option>
+			<option value="semlegesJo">Semleges Jó</option>
+			<option value="kaotikusJo">Kaotikus Jó</option>
+			<option value="torvenyesSemleges">Törvényes Semleges</option>
+			<option value="semleges">Semleges</option>
+			<option value="kaotikusSemleges">Kaotikus Semleges</option>
+			<option value="torvenyesGonosz">Törvényes Gonosz</option>
+			<option value="semlegesGonosz">Semleges Gonosz</option>
+			<option value="kaotikusGonosz">Kaotikus Gonosz</option>
+		</select>
+
+		</div>
+</div>
+
+<!-- OKOSSÁGOK IDE -->
+<script src="prog.js"></script>
+<script src="fajok.js"></script>
+
+</body>
+</html>
