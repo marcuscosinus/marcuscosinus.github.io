@@ -3,50 +3,64 @@
 <head>
 <meta charset="utf-8" />
 	<title>Kard és Mágia Karakterlap</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+</style>
 </head>
 <body>
 
 <div><h1>SZINT</h1>
 
-<input type="number" min="3" max="20"></input>
+<input id="level" type="number" min="3" max="20" value="3"></input>
 </div>
 
-<div id="attribs">
+<div id="attribs" style="border:1px;">
 		<h1>Tulajdonságok</h1>
 			<table>
 				<tr>
-				<th>Tulajdonságok</th>
+				<th>Tulajdonság</th>
+				<th>Érték</th>
 				<th>Módosító</th>
 				</tr>
 				<tr>
-					<td id="str">Erő: <span></span></td>
-					<td id="strMod"> <span></span></td>
+					<td>Erő</td>
+					<td id="str"></td>
+					<td id="strMod"></td>
 				</tr>
 				<tr>
-					<td id="agi">Ügyesség: <span></span></td>
-					<td id="agiMod"> <span></span></td>
+					<td>Ügyesség</td>
+					<td id="agi"></td>
+					<td id="agiMod"></td>
 				</tr>
 				<tr>
-					<td id="ints">Intelligencia: <span></span></td>
-					<td id="intsMod"><span></span></td>
+					<td>Intelligencia</td>
+					<td id="ints"></td>
+					<td id="intsMod"></td>
 				</tr>
 				<tr>
-					<td id="con">Egészség: <span></span></td>
-					<td id="conMod"><span></span></td>
+					<td>Egészség</td>
+					<td id="con"></td>
+					<td id="conMod"></td>
 				</tr>
 				<tr>
-					<td id="wis">Bölcsesség: <span></span></td>
-					<td id="wisMod"><span></span></td>
+					<td>Bölcsesség</td>
+					<td id="wis"></td>
+					<td id="wisMod"></td>
 				</tr>
-				<tr>	
-					<td id="cha">Karizma: <span></span></td>	
-					<td id="chaMod"><span></span></td>
+				<tr>
+					<td>Karizma</td>
+					<td id="cha"></td>
+					<td id="chaMod"></td>
 				</tr>
 			</table>
 
 
-
-<button type="button" name="roll" onclick="statok()">Roll</button>
+<button type="button" id="statroll">Roll</button>
 </div>
 
 
@@ -86,15 +100,20 @@
 		<input id="kasztGomb" type="button" value="OK"></input>
 		</div>
 
+<div>
+<input id="generator" type="button" value="GYÁ"></input>
+</div>
+
 <div id="masodlagos">
 		<h1>Másodlagos értékek</h1>
-		<div id="hp">HP: <span></span></div>
-		<div id="vo">VO: <span></span></div>
-		<div id="attackBonus">Támadási bónusz: <span></span></div>
-		<div id="kitartas">Kitartás: <span></span></div>
-		<div id="reflex">Reflex: <span></span></div>
-		<div id="akaratero">Akaraterő: <span></span></div>
-		<div id="jellem">Jellem: 
+		<div >HP: <span id="hp"></span></div>
+		<div>VO: <span id="vo"></span></div>
+		<div>Közelharci támadás: <span id="kozelharci"></span></div>
+		<div>Távolsági támadás: <span id="tavolsagi"></span></div>
+		<div>Kitartás: <span id="kitartas"></span></div>
+		<div>Reflex: <span id="reflex"></span></div>
+		<div>Akaraterő: <span id="akaratero"></span></div>
+		<div id="jellem">Jellem:
 
 		<select name="" id="jellem">
 			<option value="torvenyesJo">Törvényes Jó</option>
@@ -109,11 +128,12 @@
 		</select>
 
 		</div>
+<div>
+		<input id="reset" type="button" value="Reset"></input>
+		</div>
 </div>
 
 <!-- OKOSSÁGOK IDE -->
-<script src="prog.js"></script>
-<script src="fajok.js"></script>
-
+<script src="fajgyak.js"></script>
 </body>
 </html>
