@@ -32,8 +32,8 @@ var karakter = {
         //kasztSzorzo: 0
     },
 
-    spec: null,             //faj
-    kaszt: null,
+    spec: "null",             //faj
+    kaszt: "null",
     level: 3,               //kezdő karakternek ajánlott a 3. szint
 
 
@@ -119,7 +119,8 @@ var karakter = {
 //FAJBÓL JÖVŐ BÓNUSZOK
 //Fajtól függően növekszik/csökken egy-egy Főtulajdonság értéke
     getSpecies: function(specie) {
-      switch (specie) {
+      while (generatorUsed < 1) {
+        switch (specie) {
         case "Ember":
             break;
         case "Amazon":
@@ -168,10 +169,11 @@ var karakter = {
             break;
         }
 
-    karakter.setMod(karakter.primary);      //A módosítók ['karakter.mods'] kiszámítása
+    
     console.log(karakter.primary);          //  amint ki lett választva a faj
     console.log(karakter.mods);  
-    },
+      }
+      },
  
  //Kaszttól függően értéket kap a 'diceOfClass' és az alap Támadóerő   
     getClass: function(kaszt) {
@@ -254,6 +256,7 @@ var mento1 = [0, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10];
 var statcheck = false;
 var kasztcheck = false;
 var fajcheck = false;
+var generatorUsed = 0;
 
 //Karakter incializálás, kiszámolja a fő statokat.
 //A setMod paramétere a fő statokat tartalmazó object,
@@ -314,6 +317,8 @@ jQuery(document).ready(function() {
 
     $('#generator').click(function(event) {
         if (statcheck && fajcheck && kasztcheck) {   //ha van stat, kaszt, faj választva
+            karakter.setMod(karakter.primary);      //A módosítók ['karakter.mods'] kiszámítása
+            generatorUsed += 1;
             karakter.getSpecies(karakter.spec);     //fajtól függő értékek kiszámolódnak
             karakter.getClass(karakter.kaszt);      //kaszttól függő értékek kiszámolódnak
             karakter.secondary.hp = 
@@ -321,10 +326,15 @@ jQuery(document).ready(function() {
             karakter.secondary.vo = karakter.setVO(karakter.mods.agi);
             karakter.secondary.kozelharci = karakter.setKozelharc();
             karakter.secondary.tavolsagi = karakter.setTavolsag();
+            
             console.log("HP:", karakter.secondary.hp);
             console.log("VO:", karakter.secondary.vo);
+            console.log("AttackMod:", karakter.secondary.attack);
+            console.log("diceOfClass:", karakter.secondary.diceOfClass);
+            console.log("Szint:", karakter.level);
             console.log("Közelharci:", karakter.secondary.kozelharci);
             console.log("Távolsági:", karakter.secondary.tavolsagi);
+            
             $('#hp').text(karakter.secondary.hp);   //minden másodlagos érték HTML-be írása
             $('#vo').text(karakter.secondary.vo);
             $('#kozelharci').text(karakter.secondary.kozelharci);
