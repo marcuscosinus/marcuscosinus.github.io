@@ -250,7 +250,10 @@ function rollDie(sides){
 var mento1 = [0, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10];
 
 
-
+//Bolondbiztosítás alapfokon
+var statcheck = false;
+var kasztcheck = false;
+var fajcheck = false;
 
 //Karakter incializálás, kiszámolja a fő statokat.
 //A setMod paramétere a fő statokat tartalmazó object,
@@ -265,6 +268,7 @@ jQuery(document).ready(function() {
     $('#statroll').click(function(event) {
         karakter.init();                        //Főtulajdonságok
         karakter.setMod(karakter.primary);      //Módosítók
+        statcheck = true;
         console.log(karakter.primary);
         console.log(karakter.mods);
         $('#str').text(karakter.primary.str);   //HTML-be írás
@@ -284,8 +288,13 @@ jQuery(document).ready(function() {
     });
 
     $('#fajGomb').click(function(event) {
-        karakter.spec = fajValaszto.value;      //faj tárolódik
-        $('#fajGomb').hide();
+        
+        if (fajValaszto.value != "null") {           //ha választott fajt
+            karakter.spec = fajValaszto.value;      //faj tárolódik
+            fajcheck = true;
+            $('#fajGomb').hide();
+        };
+        
     });
 
     $('#reset').click(function(event) {
@@ -293,30 +302,39 @@ jQuery(document).ready(function() {
     });
     
     $('#kasztGomb').click(function(event) {
-        karakter.kaszt = kasztValaszto.value;   //kaszt tárolódik
-        $('#kasztGomb').hide();
+        
+        if (kasztValaszto.value != "null") {         //ha választott kasztot
+            karakter.kaszt = kasztValaszto.value;   //kaszt tárolódik
+            kasztcheck = true;
+            $('#kasztGomb').hide();
+        };
+       
         
     });
 
     $('#generator').click(function(event) {
-        karakter.getSpecies(karakter.spec);     //fajtól függő értékek kiszámolódnak
-        karakter.getClass(karakter.kaszt);      //kaszttól függő értékek kiszámolódnak
-        karakter.secondary.hp = 
-        karakter.setHP(karakter.level, karakter.mods.con, karakter.secondary.diceOfClass);
-        karakter.secondary.vo = karakter.setVO(karakter.mods.agi);
-        karakter.secondary.kozelharci = karakter.setKozelharc();
-        karakter.secondary.tavolsagi = karakter.setTavolsag();
-        console.log("HP:", karakter.secondary.hp);
-        console.log("VO:", karakter.secondary.vo);
-        console.log("Közelharci:", karakter.secondary.kozelharci);
-        console.log("Távolsági:", karakter.secondary.tavolsagi);
-        $('#hp').text(karakter.secondary.hp);   //minden másodlagos érték HTML-be írása
-        $('#vo').text(karakter.secondary.vo);
-        $('#kozelharci').text(karakter.secondary.kozelharci);
-        $('#tavolsagi').text(karakter.secondary.tavolsagi);
-        $('#kitartas').text(karakter.secondary.kitart);
-        $('#reflex').text(karakter.secondary.refl);
-        $('#akaratero').text(karakter.secondary.akae);
+        if (statcheck && fajcheck && kasztcheck) {   //ha van stat, kaszt, faj választva
+            karakter.getSpecies(karakter.spec);     //fajtól függő értékek kiszámolódnak
+            karakter.getClass(karakter.kaszt);      //kaszttól függő értékek kiszámolódnak
+            karakter.secondary.hp = 
+            karakter.setHP(karakter.level, karakter.mods.con, karakter.secondary.diceOfClass);
+            karakter.secondary.vo = karakter.setVO(karakter.mods.agi);
+            karakter.secondary.kozelharci = karakter.setKozelharc();
+            karakter.secondary.tavolsagi = karakter.setTavolsag();
+            console.log("HP:", karakter.secondary.hp);
+            console.log("VO:", karakter.secondary.vo);
+            console.log("Közelharci:", karakter.secondary.kozelharci);
+            console.log("Távolsági:", karakter.secondary.tavolsagi);
+            $('#hp').text(karakter.secondary.hp);   //minden másodlagos érték HTML-be írása
+            $('#vo').text(karakter.secondary.vo);
+            $('#kozelharci').text(karakter.secondary.kozelharci);
+            $('#tavolsagi').text(karakter.secondary.tavolsagi);
+            $('#kitartas').text(karakter.secondary.kitart);
+            $('#reflex').text(karakter.secondary.refl);
+            $('#akaratero').text(karakter.secondary.akae);
+        };
+
+        
     })
 
  });
