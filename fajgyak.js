@@ -2,7 +2,7 @@
 //csoportosítva.
 var karakter = {
 
-    primary:{
+    primary: {
         str: 0,
         agi: 0,
         ints: 0,
@@ -15,18 +15,18 @@ var karakter = {
 //fog kiszámítódni, for-in ciklussal. Úgy sikerült összehozni,
 //hogy a 'primary' neveit bemásolja az objektve, az értékeit pedig
 //kiszámolja (ld. később)
-    mods:{
+    mods: {
 
     },
 
-    secondary:{
+    secondary: {
         diceOfClass: 0,     //HP dobáshoz a kocka típusa
         hp: 0,
         vo: 0,
         attack: 0,
         kozelharci: 0,
         tavolsagi: 0,
-        kitart:0,
+        kitart: 0,
         refl: 0,
         akae: 0             //Akaraterő
         //kasztSzorzo: 0
@@ -38,13 +38,13 @@ var karakter = {
 
 
 //Future feature
-    skills:{
+    skills: {
 
     },
 
 //A karakter főtulajdonságainak kiszámítása. Minden egyes
 //tulajdonságnak dob egy 4d6-ot.
-    init :  function(){
+    init :  function () {
                 for (var stats in karakter.primary){
                         karakter.primary[stats] = rollDice(4,6);
                 }
@@ -117,7 +117,8 @@ var karakter = {
     },
 
 //FAJBÓL JÖVŐ BÓNUSZOK
-//Fajtól függően növekszik/csökken egy-egy Főtulajdonság értéke
+//Fajtól függően növekszik/csökken egy-egy Főtulajdonság értéke,
+// egyszer fut csak le
     getSpecies: function(specie) {
       while (generatorUsed < 1) {
         switch (specie) {
